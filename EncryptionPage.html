@@ -5,84 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EncodeX Encryption</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
+    <style>
+      body {
+        background: radial-gradient(ellipse at center, #0f172a 0%, #0a0f1d 100%);
+        font-family: 'Press Start 2P';
+        font-size:smaller
+      }
+    </style>
 </head>
-<body class="font-serif">
+<body class="font-sans text-white relative min-h-screen overflow-x-hidden">
     <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-        <source src="pixelate.mp4" type="video/mp4"/>
+        <source src="3129671-uhd_3840_2160_30fps.mp4" type="video/mp4"/>
         Your browser does not support the video tag.
     </video>
-    <div class="absolute inset-0 bg-black/0 backdrop-blur-sm z-10 shadow-inner"></div>
-    <div class="relative z-10 p-8 text-center sm:text-center text-amber-50">
-        <h2 class="text-2xl sm:text-3xl">🔐 EncodeX: &nbsp;&nbsp;Talk Freely, Speak Securely.</h2>
-        <p class="mt-3">VOIP Reinvented with Asymmetric & Symmetric Encryption.</p>
-    </div>
+  <!-- Overlay Glow Effect -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] opacity-0 z-0"></div>
 
-    <form id="encryptForm" method="POST" action="encryptback.php" class="grid grid-cols-1 md:grid-cols-3 h-auto md:min-h-screen">
-        <div class="md:col-span-2 bg-blue-200 p-4 rounded-md border-white border-2 shadow-gray-400/50 z-10">
-            <h2 class="text-lg md:text-xl text-center text-black">🔥Not Just Encrypted__EncodeX Encrypted.</h2>
-            <div class="bg-white border-1 p-6 mt-4 rounded-lg shadow-lg w-full md:w-[80%] mx-auto overflow-hidden">
-                <div class="bg-white flex justify-center">
-                    <img class="object-center border-3 rounded-full w-32 h-32 md:w-55 md:h-53" src="profilepic.jpg" alt="Your friendly Neighbourhood Spiderman">
-                </div>
-                <div class="w-full max-w-md mx-auto mt-10">
-                    <label for="menu" class="block mb-2 text-sm font-medium text-gray-700">Choose an option:</label>
-                    <select id="menu" name="encryptionType" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                        <option value="symmetric">Encryption using Symmetric key</option>
-                        <option value="asymmetric">Encryption using Asymmetric key</option>
-                    </select>
-                    
-                    <input name="message" class="w-full mt-5 border rounded-md p-5" placeholder="Message to Encrypt" required>
-                    <button id="encryptBtn" type="submit" class="w-full border bg-blue-600 px-5 py-2 rounded-md hover:bg-gray-300 text-white mt-3">EncodeX</button>
-                    <input readonly class="w-full mt-3 border rounded-md p-5" placeholder="Encrypted Message will be displayed here">
-                    <input readonly class="w-full mt-3 border rounded-md p-3" placeholder="Key Will be displayed here">
-                </div>
-            </div>
-        </div>
+  <!-- Main Content -->
+  <div class="relative z-10 px-4 py-10 max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl text-center font-extrabold text-white mb-6">
+      🔐 <span class="text-yellow-500">EncodeX</span>: Talk Freely, Speak Securely.
+    </h2>
+    <p class="text-center text-yellow-500 mb-10">VOIP Reinvented with Asymmetric & Symmetric Encryption.</p>
 
-        <div class="bg-gray-200 md:col-span-1 sm:rounded-md border-white border-2 shadow-gray-400/50 z-10 mt-4 md:mt-0">
-            <h2 class="text-center text-gray-800 text-lg md:text-xl font-bold underline mt-10">Instructions to keep in mind </h2>
-            <p class="text-left mt-10 ml-5">
-                Note: This page encrypts your message to provide high protection and seamless encrypted communication.
-            </p>
-            <ul class="list-disc pl-5 space-y-7">
-                <p class="text-center font-bold text-black mt-20 underline">Follow the given Steps:</p>
-                <li>Select the key type for encryption from the dropdown provided below.</li>
-                <li>Write the message you want to encrypt in the input box below.</li>
-                <li>Click on the "EncodeX" button to encrypt your message.</li>
-                <li>After following the steps, your encrypted message and key will be displayed in the respective fields.</li>
-            </ul>
+    <form id="encryptForm" method="POST" action="encryptback.php" class="grid grid-cols-1 md:grid-cols-3 gap-7">
+      
+      <!-- Left Side: Encryption Form -->
+      <div class="md:col-span-2 bg-[#000717e3] bg-opacity-90 backdrop-blur-md p-6 rounded-xl shadow-lg shadow-cyan-500/20">
+        <h3 class="text-xl font-semibold text-yellow-500 text-center">🔥 Not Just Encrypted — <span class="text-white">EncodeX Encrypted</span></h3>
+        
+        <div class="mt-6 space-y-7 w-full max-w-lg mx-auto">
+          <!-- Profile Image -->
+          <div class="flex justify-center">
+            <img class="rounded-full border-1 border-cyan-400 w-32 h-32 object-cover" src="profilepic.jpg" alt="Profile Image">
+          </div>
+
+          <!-- Dropdown -->
+          <div>
+            <label for="menu" class="block mb-1 text-sm text-cyan-300">Choose Encryption Type:</label>
+            <select id="menu" name="encryptionType" class="w-full p-3 rounded-lg bg-[#0f172a] border border-cyan-500 text-white">
+              <option value="symmetric">Encryption using Symmetric key</option>
+              <option value="asymmetric">Encryption using Asymmetric key</option>
+            </select>
+          </div>
+
+          <!-- Message Input -->
+          <input name="message" class="w-full p-4 bg-[#0f172a] border border-cyan-400 rounded-md placeholder:text-cyan-300" placeholder="Message to Encrypt" required />
+
+          <!-- Submit Button -->
+          <button id="encryptBtn" type="submit" class="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-4 py-3 rounded-md transition-all">EncodeX</button>
+
+          <!-- Encrypted Output -->
+          <input readonly class="w-full p-4 bg-[#0f172a] border border-cyan-500 text-cyan-200 rounded-md" placeholder="Encrypted Message will be displayed here">
+          <input readonly class="w-full p-4 bg-[#0f172a] border border-cyan-500 text-cyan-200 rounded-md" placeholder="Key Will be displayed here">
         </div>
+      </div>
+
+      <!-- Right Side: Instructions -->
+      <div class="bg-[#000717e3]  rounded-xl p-6 text-cyan-100 shadow-lg shadow-cyan-400/10 ">
+        <h3 class="text-center text-lg font-bold underline text-yellow-400 mb-6">Instructions to Keep in Mind</h3>
+        <p class="mb-4">This page encrypts your message to ensure secure VoIP communication using advanced cryptographic algorithms.</p>
+        <ul class="list-decimal pl-5 space-y-10 ml-4">
+          <li>Select the key type for encryption from the dropdown.</li>
+          <li>Type your message into the input box.</li>
+          <li>Click "EncodeX" to perform encryption.</li>
+          <li>Your encrypted message and key will appear below.</li>
+        </ul>
+      </div>
     </form>
-    
-    <footer class="bg-black text-white text-center py-3 border-t border-gray-700">
-        created by team@Stackoverflowers
-    </footer>
-    <script>
-        document.getElementById("encryptForm").addEventListener("submit", async function(event) {
-            event.preventDefault(); // Prevent default form submission
-    
-            const formData = new FormData(this); // Gather form data
-            const response = await fetch("encryptback.php", {
-                method: "POST",
-                body: formData // Send the form data to the backend
-            });
-    
-            const result = await response.json(); // Parse the JSON response
-    
-            if (result.encryptedMessage) {
-                // Display the encrypted message
-                document.querySelector("input[placeholder='Encrypted Message will be displayed here']").value = result.encryptedMessage;
-                
-                // Display the encryption key (for symmetric or public key for asymmetric)
-                if (result.key || result.publicKey) {
-                    const keyField = document.querySelector("input[placeholder='Key Will be displayed here']");
-                    keyField.value = result.key || result.publicKey; // Update dynamically
-                }
-            } else {
-                alert(result.error || "Encryption failed."); // Show error message
-            }
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black text-center py-4 border-t border-gray-800 mt-10 relative z-10">
+    Created with ❤️ by  <span class="text-cyan-400 font-semibold">team@Stackoverflowers</span>
+  </footer>
+
+  <!-- Encryption Form Logic -->
+  <script>
+    document.getElementById("encryptForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      try {
+        const response = await fetch("encryptback.php", {
+          method: "POST",
+          body: formData
         });
-    </script>
-    
+        const result = await response.json();
+        if (result.encryptedMessage) {
+          document.querySelector("input[placeholder='Encrypted Message will be displayed here']").value = result.encryptedMessage;
+          const keyField = document.querySelector("input[placeholder='Key Will be displayed here']");
+          keyField.value = result.key || result.publicKey || "";
+        } else {
+          alert(result.error || "Encryption failed.");
+        }
+      } catch (error) {
+        alert("An error occurred while encrypting. Please try again.");
+      }
+    });
+  </script>
 </body>
 </html>

@@ -3,44 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EncodeX Encryption</title>
+    <title>DecodeX Decryption</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
+    <style>
+      body {
+        background: radial-gradient(ellipse at center, #0f172a 0%, #0a0f1d 100%);
+        font-family: 'Press Start 2P';
+        font-size:smaller
+      }
+    </style>
 </head>
-<body class="font-serif">
+<body class="font-sans text-white relative min-h-screen overflow-x-hidden">
     <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-        <source src="pixelate.mp4" type="video/mp4"/>
+        <source src="3129671-uhd_3840_2160_30fps.mp4" type="video/mp4"/>
         Your browser does not support the video tag.
     </video>
-    <div class="absolute inset-0 bg-black/0 backdrop-blur-sm z-10 shadow-inner"></div>
-    <div class="relative z-10 p-8 text-center sm:text-center text-amber-50">
-        <h2 class="text-2xl sm:text-3xl">🔓 DecodeX: &nbsp;&nbsp;Secure Decryption, Made Simple.</h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 h-auto md:min-h-screen">
-        <div class="bg-gray-200 md:col-span-1 sm:rounded-md border-white border-2 shadow-gray-400/50 z-10 mt-4 md:mt-0 p-5">
-            <h2 class="text-center text-gray-800 text-lg md:text-xl font-bold underline">Instructions</h2>
-            <ul class="list-disc pl-5 space-y-3 mt-5">
-                <li>Select the decryption type: Symmetric or Asymmetric key.</li>
-                <li>Enter your encrypted message and the key provided during encryption.</li>
-                <li>Click on "DecodeX" to decrypt the message.</li>
-            </ul>
-        </div>
-        <div class="md:col-span-2 bg-blue-200 p-6 rounded-md border-white border-2 shadow-gray-400/50 z-10">
-            <h2 class="text-lg text-center text-black mb-5">Decrypt Like a Pro. Decode with DecodeX. 🧠</h2>
-            <form id="decryptForm" class="bg-white p-6 rounded-lg shadow-lg w-full md:w-[80%] mx-auto">
-                <label for="decryptType" class="block mb-2 text-sm font-medium text-gray-700">Choose Decryption Type:</label>
-                <select id="decryptType" name="decryptType" class="w-full p-2 border border-gray-300 rounded-lg mb-4">
-                    <option value="symmetric">Decryption using Symmetric key</option>
-                    <option value="asymmetric">Decryption using Asymmetric key</option>
-                </select>
-                <input id="encryptedMessage" name="encryptedMessage" class="w-full p-2 border border-gray-300 rounded-lg mb-4" placeholder="Encrypted Message" required>
-                <input id="key" name="key" class="w-full p-2 border border-gray-300 rounded-lg mb-4" placeholder="Decryption Key" required>
-                <button id="decodeButton" type="button" class="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700">DecodeX</button>
-                <input id="decryptedMessage" readonly class="w-full p-2 border border-gray-300 rounded-lg mt-4" placeholder="Decrypted Message will appear here">
-            </form>
-        </div>
-    </div>
-    <footer class="bg-black text-white text-center py-3">Created by team@Stackoverflowers</footer>
 
+    <!-- Overlay Glow Effect -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] opacity-40 z-0"></div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 px-4 py-10 max-w-7xl mx-auto">
+        <h2 class="text-2xl md:text-5xl text-center font-semibold text-white mb-6">
+            🔓 <span class="text-yellow-400">DecodeX</span>: Secure Decryption, Made Simple.
+        </h2>
+        <p class="text-center text-yellow-400 mb-10">Decrypt Messages with Symmetric & Asymmetric Keys for Secure Communication.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Left Side: Instructions -->
+            <div class="bg-[#000717e3] rounded-xl p-6 text-cyan-100 shadow-lg shadow-cyan-400/10">
+                <h3 class="text-center text-lg font-bold underline text-yellow-300 mb-6">Instructions</h3>
+                <ul class="list-decimal pl-5 space-y-10 ml-4">
+                    <li>Select the decryption type: Symmetric or Asymmetric key.</li>
+                    <li>Enter your encrypted message and the key provided during encryption.</li>
+                    <li>Click "DecodeX" to decrypt the message.</li>
+                </ul>
+            </div>
+
+            <!-- Right Side: Decryption Form -->
+            <div class="md:col-span-2 bg-[#000717e3] p-6 rounded-md shadow-lg shadow-cyan-400/10">
+                <h2 class="text-lg text-center text-yellow-300 mb-5">Decrypt Like a Pro_<span class="text-white"> Decode with DecodeX. 🧠</span></h2>
+                <form id="decryptForm" class="bg-[#0f172a] p-6 rounded-lg shadow-lg w-full md:w-[80%] mx-auto">
+                    <label for="decryptType" class="block mb-2 text-sm font-medium text-cyan-300">Choose Decryption Type:</label>
+                    <select id="decryptType" name="decryptType" class="w-full p-3 border border-cyan-500 rounded-lg mb-4 bg-[#0f172a] text-white">
+                        <option value="symmetric">Decryption using Symmetric key</option>
+                        <option value="asymmetric">Decryption using Asymmetric key</option>
+                    </select>
+                    <input id="encryptedMessage" name="encryptedMessage" class="w-full p-4 border border-cyan-400 rounded-md placeholder:text-cyan-300 mb-4 bg-[#0f172a] text-white" placeholder="Encrypted Message" required>
+                    <input id="key" name="key" class="w-full p-4 border border-cyan-400 rounded-md placeholder:text-cyan-300 mb-4 bg-[#0f172a] text-white" placeholder="Decryption Key" required>
+                    <button id="decodeButton" type="button" class="w-full bg-cyan-500 text-black p-4 rounded-md hover:bg-cyan-400 transition ease-in-out duration-300">DecodeX</button>
+                    <input id="decryptedMessage" readonly class="w-full p-4 border border-cyan-500 text-cyan-200 rounded-md mt-4 bg-[#0f172a]" placeholder="Decrypted Message will appear here">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-center py-4 border-t border-gray-800 mt-10 relative z-10">
+        Created with ❤️ by <span class="text-cyan-400 font-semibold">team@Stackoverflowers</span>
+    </footer>
+
+    <!-- Decryption Form Logic -->
     <script>
         document.getElementById("decodeButton").addEventListener("click", async function() {
             const decryptType = document.getElementById("decryptType").value;
