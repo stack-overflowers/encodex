@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EncodeX Encryption</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="font-serif">
+      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+            <source src="pixelate.mp4" type="video/mp4"/>
+            Your browser does not support the video tag.
+        </video>
+        <div class="absolute inset-0 bg-black/0 backdrop-blur-sm z-10 shadow-inner"></div>
+        <div class="relative z-10 p-8 text-center sm:text-center text-amber-50">
+            <h2 class="text-2xl sm:text-3xl">🔐 EncodeX: &nbsp;&nbsp;Talk Freely, Speak Securely.</h2>
+            <p class="mt-3">VOIP Reinvented with Asymmetric & Symmetric Encryption.</p>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 h-auto md:min-h-screen">
+        <div class="md:col-span-2 bg-blue-200 p-4 rounded-md border-white border-2 shadow-gray-400/50 z-10">
+            <h2 class="text-lg md:text-xl text-center text-black">🔥Not Just Encrypted__EncodeX Encrypted.</h2>
+            <div class="bg-white border-1 p-6 mt-4 rounded-lg shadow-lg w-full md:w-[80%] mx-auto overflow-hidden">
+                <div class="bg-white flex justify-center">
+                    <img class="object-center border-3 rounded-full w-32 h-32 md:w-55 md:h-53" src="profilepic.jpg" alt="Your friendly Neighbourhood Spiderman">
+                </div>
+                <div class="w-full max-w-md mx-auto mt-10">
+                    <label for="menu" class="block mb-2 text-sm font-medium text-gray-700">Choose an option:</label>
+                    <select id="menu" name="menu" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option value="Encryption using Symmetric key">Encryption using Symmetric key</option>
+                        <option value="Encryption using Asymmetric key">Encryption using Asymmetric key</option>
+                    </select>
+                
+                    <input class="w-full mt-5 border rounded-md p-5" placeholder="Message to Encrypt" required>
+                    <button id="encryptBtn" class="w-full border bg-blue-600 px-5 py-2 rounded-md hover:bg-gray-300 text-white mt-3">EncodeX</button>
+                    <input class="w-full mt-3 border rounded-md p-5" placeholder="Encrypted Message will be displayed here">
+                    <input class="w-full mt-3 border rounded-md p-3" placeholder="Key Will be displayed here">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-200 md:col-span-1 sm:rounded-md border-white border-2 shadow-gray-400/50 z-10 mt-4 md:mt-0">
+            <h2 class="text-center text-gray-800 text-lg md:text-xl font-bold underline mt-10">Instructions to keep in mind </h2>
+            <p class="text-left mt-10 ml-5">
+                Note: This particular page is being used to encrypt your message to provide you high protection, provide security and provide seamless encrypted communication.
+            </p>
+            <ul class="list-disc pl-5 space-y-7">
+                <p class="text-center font-bold text-black mt-20 underline">Follow the given Steps  :</p>
+                <li>Firstly select using which key do you want to encrypt your message from the dropdown provided below.</li>
+                <li>After the first step - write the message you want to encrypt in the space provided below.</li>
+                <li>After writing the complete message you want to encrypt - click on the "EncodeX" Button provided to you.</li>
+                <li>After all the above steps are implemented correctly - you will get your encrypted message and the key will be provided to you.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer class="bg-black text-white text-center py-3 border-t border-gray-700">
+        created by team@Stackoverflowers
+    </footer>
+
+    <script>
+        document.getElementById("encryptBtn").addEventListener("click", function() {
+            alert("Your message successfully got encrypted");
+        });
+    </script>
+</body>
+</html>
