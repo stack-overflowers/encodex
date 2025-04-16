@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EncodeX | Advanced VoIP Encryption</title>
+    <title>EncodeX | Advanced VoiP Encryption</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0a192f;
-            --secondary: #64ffda;
+            --primary: #010a16;
+            --secondary: #64ffdba5;
             --accent: #ff5555;
             --light: #ccd6f6;
             --dark: #020c1b;
@@ -18,13 +21,15 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', sans-serif;
+            font-family: 'Press Start 2P';    
         }
-
+        
         body {
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: small;
+            
         }
 
         /* Video Background */
@@ -47,6 +52,8 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(5px);
+            
+            
         }
 
         .container {
@@ -59,6 +66,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            
         }
 
         .logo {
@@ -176,7 +184,7 @@
 
         .features {
             padding: 5rem 0;
-            background: rgba(10, 25, 47, 0.9);
+            background: rgba(0, 8, 21, 0.96);
             position: relative;
             backdrop-filter: blur(5px);
         }
@@ -209,12 +217,12 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
         .feature-card {
-            background: rgba(23, 42, 69, 0.5);
+            background: rgba(2, 24, 55, 0.5);
             padding: 2rem;
             border-radius: 5px;
             transition: all 0.3s;
@@ -348,7 +356,7 @@
         }
 
         footer {
-            background: rgba(10, 25, 47, 0.95);
+            background: rgba(0, 9, 23, 0.95);
             padding: 3rem 0 1rem;
             position: relative;
             backdrop-filter: blur(5px);
@@ -405,7 +413,7 @@
         }
 
         .social-links a:hover {
-            background: rgba(100, 255, 218, 0.2);
+            background: rgb(0, 0, 0);
             transform: translateY(-3px);
         }
 
@@ -457,6 +465,11 @@
                 padding-right: 0;
                 margin-bottom: 2rem;
             }
+            main h1, main h2, section h1, section h2, footer h1, footer h2 {
+            font-size: 3rem;
+        }
+            
+            
         }
     </style>
 </head>
@@ -475,12 +488,12 @@
                     EncodeX
                 </a>
                 <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Solutions</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Resources</a></li>
-                    <li><a href="#">Contact</a></li>
+                    
+                    <li><a href="#">Home/Login</a></li>
+                    <li><a href="http://127.0.0.1:5500/encodex/EncryptionPage.html">Message encryption</a></li>
+                    <li><a href="http://127.0.0.1:5500/encodex/decryptionPage.html">Message Decryption</a></li>
+                    <li><a href="http://127.0.0.1:5500/encodex/frontendproject/index.html">Calling</a></li>
+                    <li><a href="#">Contact and Review</a></li>
                 </ul>
                 <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
@@ -493,10 +506,9 @@
         <div class="container">
             <div class="hero-content">
                 <h2>Advanced VoIP Security</h2>
-                <h1>Secure Communications with <span>EncodeX</span></h1>
+                <h1>Secure Communications with <span class="text">EncodeX</span></h1>
                 <p>Military-grade encryption combining symmetric and asymmetric cryptography to protect your voice communications from eavesdropping and cyber threats.</p>
-                <a href="#" class="btn btn-filled">Get Started</a>
-                <a href="#" class="btn">Learn More</a>
+                
             </div>
         </div>
     </section>
@@ -540,7 +552,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-user-check"></i>
                     </div>
-                    <h3>Mutual Authentication</h3>
+                    <h3 >Mutual Authentication</h3>
                     <p>Both parties verify each other's identity using digital certificates to prevent MITM attacks</p>
                 </div>
                 <div class="feature-card">
@@ -561,7 +573,6 @@
                     <h2>How <span>EncodeX</span> Encryption Works</h2>
                     <p>Our proprietary hybrid encryption system combines the best of both cryptographic worlds to secure your VoIP communications with minimal performance overhead.</p>
                     <p>Asymmetric encryption establishes secure connections and exchanges keys, while symmetric encryption protects the actual voice data with optimal efficiency.</p>
-                    <a href="#" class="btn btn-filled">Technical Whitepaper</a>
                 </div>
                 <div class="encryption-diagram">
                     <div class="diagram">
@@ -615,36 +626,8 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Products</h3>
-                    <ul>
-                        <li><a href="#">Enterprise Solution</a></li>
-                        <li><a href="#">Business VoIP</a></li>
-                        <li><a href="#">Developer API</a></li>
-                        <li><a href="#">Mobile Apps</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Security Audits</a></li>
-                        <li><a href="#">Cryptography FAQ</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press Kit</a></li>
-                        <li><a href="#">Contact Security</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="copyright">
-                <p >&copy; 2023 EncodeX Technologies. All rights reserved. | <a href="#" style="color: teal;">Privacy Policy</a> | <a href="#" style="color: teal;">Security Policy</a> | <a href="#" style="color: teal;">Terms of Service</a></p>
+                <p >&copy; 2025 EncodeX Technologies. All rights reserved. | <a href="#" style="color: teal;">Create with ❤️ by team@Stackoverflowers</a></p>
             </div>
         </div>
     </footer>
