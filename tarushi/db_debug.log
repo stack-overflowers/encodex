@@ -1,0 +1,75 @@
+[2025-04-09 22:46:43] Connection attempt
+POST Data: Array
+(
+    [username] => tarushiiii
+    [email] => tarushiiiii@gmail.com
+    [password] => 1234
+)
+
+Attempting to insert: tarushiiii, tarushiiiii@gmail.com
+Insert successful
+[2025-04-12 09:25:16] Connection attempt
+Error: Connection failed: No connection could be made because the target machine actively refused it
+[2025-04-12 09:25:22] Connection attempt
+Error: Connection failed: No connection could be made because the target machine actively refused it
+[2025-04-12 09:25:50] Connection attempt
+Error: Connection failed: No connection could be made because the target machine actively refused it
+[2025-04-15 10:41:37] Connection attempt
+POST Data: Array
+(
+    [username] => tarushi
+    [email] => tarushigupta2084@gmail.com
+    [password] => ddd
+)
+
+Attempting to insert: tarushi, tarushigupta2084@gmail.com
+Insert successful
+[2025-04-15 11:09:46] Connection attempt
+POST Data: Array
+(
+    [username] => Rahu
+    [email] => gfuqefgi@gmail.com
+    [password] => 12345
+)
+
+Attempting to insert: Rahu, gfuqefgi@gmail.com
+Insert successful
+[2025-04-15 15:16:47] Connection attempt
+POST Data: Array
+(
+    [username] => dede
+    [email] => dede@gmail.com
+    [password] => 123
+)
+
+Attempting to insert: dede, dede@gmail.com
+Insert successful
+[2025-04-15 15:19:42] Connection attempt
+POST Data: Array
+(
+    [username] => anshika
+    [email] => anshika@gmail.com
+    [password] => 123
+)
+
+Attempting to insert: anshika, anshika@gmail.com
+Insert successful
+[2025-04-15 15:30:44] Connection attempt
+POST Data: Array
+(
+    [username] => hehes
+    [email] => hehes@gmail.com
+    [password] => 123
+)
+
+Attempting to insert: hehes, hehes@gmail.com
+Insert successful
+POST Data: Array
+(
+    [username] => shubh
+    [email] => shubh@gmail.com
+    [password] => 123
+)
+
+Attempting to insert: shubh, shubh@gmail.com
+Insert successful
