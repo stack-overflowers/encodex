@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About EncodeX - Secure Message Encryption</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --teal: #00f5d4;
+            --dark-teal: #00bbf9;
+            --dark: #0a0a0a;
+            --darker: #000000;
+            --light: #f8f9fa;
+            --accent: #fee440;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Cybersecurity background animation */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            background: 
+                linear-gradient(135deg, var(--darker) 25%, transparent 25%) -50px 0,
+                linear-gradient(225deg, var(--darker) 25%, transparent 25%) -50px 0,
+                linear-gradient(315deg, var(--darker) 25%, transparent 25%),
+                linear-gradient(45deg, var(--darker) 25%, transparent 25%);
+            background-size: 100px 100px;
+            animation: cyberMove 20s linear infinite;
+        }
+        
+        @keyframes cyberMove {
+            0% { background-position: 0 0; }
+            100% { background-position: -200px 200px; }
+        }
+        
+        .binary-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="0" y="10" font-family="monospace" font-size="10" fill="%2300f5d4">101010</text><text x="20" y="30" font-family="monospace" font-size="10" fill="%2300f5d4">1001</text><text x="40" y="50" font-family="monospace" font-size="10" fill="%2300f5d4">11011</text><text x="60" y="70" font-family="monospace" font-size="10" fill="%2300f5d4">0101</text><text x="80" y="90" font-family="monospace" font-size="10" fill="%2300f5d4">1110</text></svg>');
+            animation: binaryScroll 50s linear infinite;
+        }
+        
+        @keyframes binaryScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--teal);
+            padding: 80px 0 150px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: -70px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--teal);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, 
+                    transparent 0%, 
+                    rgba(0, 245, 212, 0.05) 50%, 
+                    transparent 100%);
+            animation: scanline 8s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0 0 10px rgba(0, 245, 212, 0.5);
+        }
+        
+        .logo i {
+            margin-right: 15px;
+            color: var(--teal);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--light);
+        }
+        
+        .about-section {
+            background: rgba(10, 10, 10, 0.85);
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(0, 245, 212, 0.1);
+            padding: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(0, 245, 212, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        h1, h2, h3 {
+            color: var(--teal);
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(to right, var(--teal), var(--dark-teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--teal), transparent);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--teal);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 30px;
+            margin: 50px 0;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+        }
+        
+        .features::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .feature-card {
+            background: rgba(0, 10, 20, 0.7);
+            border-radius: 8px;
+            padding: 30px;
+            min-width: 250px;
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 245, 212, 0.2);
+            border-color: var(--teal);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--teal);
+            margin-bottom: 20px;
+        }
+        
+        .team {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 30px;
+            margin: 50px 0;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+        }
+        
+        .team::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .team-member {
+            background: rgba(0, 10, 20, 0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            min-width: 250px;
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 245, 212, 0.2);
+            border-color: var(--teal);
+        }
+        
+        .member-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 245, 212, 0.3);
+        }
+        
+        .member-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .member-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            color: var(--dark-teal);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--teal);
+            transform: scale(1.2);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .tech-item {
+            background: rgba(0, 245, 212, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--teal);
+            border: 1px solid var(--dark-teal);
+            transition: all 0.3s;
+        }
+        
+        .tech-item:hover {
+            background: rgba(0, 245, 212, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background: var(--darker);
+            color: var(--light);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(0, 245, 212, 0.3);
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--teal), transparent);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .footer-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal);
+            transition: width 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--teal);
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        @media (max-width: 1024px) {
+            .features, .team {
+                flex-wrap: wrap;
+                overflow-x: visible;
+            }
+            
+            .feature-card, .team-member {
+                min-width: calc(50% - 15px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0 120px;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .about-section {
+                padding: 30px;
+            }
+            
+            .feature-card, .team-member {
+                min-width: 100%;
+            }
+        }
+        
+        /* Glitch effect for headers */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        
+        .glitch::before {
+            color: #0ff;
+            z-index: -1;
+            animation: glitch-effect 3s infinite;
+        }
+        
+        .glitch::after {
+            color: #f0f;
+            z-index: -2;
+            animation: glitch-effect 2s infinite reverse;
+        }
+        
+        @keyframes glitch-effect {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-bg"></div>
+    <div class="binary-rain"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-lock"></i>
+                <span class="glitch" data-text="EncodeX">EncodeX</span>
+            </div>
+            <p class="tagline">Advanced cryptographic solutions for secure communications</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="about-section">
+            <h1>About EncodeX</h1>
+            <p>EncodeX is a military-grade encryption platform designed to protect your digital communications with cutting-edge cryptographic technology. Our systems utilize advanced algorithms to ensure your messages remain confidential and tamper-proof.</p>
+            
+            <p>In an era of increasing digital surveillance, EncodeX provides a secure haven for your private communications. We implement zero-knowledge architecture, meaning even we cannot access your encrypted data.</p>
+            
+            <h2>Core Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>End-to-End Encryption</h3>
+                    <p>Messages are encrypted on your device before transmission and can only be decrypted by the intended recipient.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-fingerprint"></i>
+                    <h3>Biometric Authentication</h3>
+                    <p>Optional biometric verification adds an extra layer of security to your encrypted communications.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>Self-Destructing Messages</h3>
+                    <p>Set expiration times for sensitive messages that automatically delete after reading.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-random"></i>
+                    <h3>Perfect Forward Secrecy</h3>
+                    <p>Each session uses unique encryption keys that are never reused, preventing mass decryption.</p>
+                </div>
+            </div>
+            
+            <h2>Security Protocol</h2>
+            <p>EncodeX employs a multi-layered security architecture:</p>
+            <div class="tech-stack">
+                <span class="tech-item">AES-256-GCM</span>
+                <span class="tech-item">ECDH-521</span>
+                <span class="tech-item">SHA-3</span>
+                <span class="tech-item">RSA-4096</span>
+                <span class="tech-item">HMAC</span>
+                <span class="tech-item">PBKDF2</span>
+                <span class="tech-item">OAuth 2.0</span>
+                <span class="tech-item">Zero-Knowledge</span>
+            </div>
+            
+            <h2>The Encryption Architects</h2>
+            <p>EncodeX was developed by a team of four cybersecurity experts with decades of combined experience in cryptographic systems.</p>
+            
+            <div class="team">
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('image/WhatsApp\ Image\ 2025-04-16\ at\ 15.28.59_2df0c548.jpg');"></div>
+                    <div class="member-info">
+                        <h3>Abhay Thakur</h3>
+                        <span class="member-role">Btech Cse</span>
+                        <p>Lovely Professional University.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-keybase"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('image/WhatsApp\ Image\ 2025-04-16\ at\ 14.23.53_c3bfd8c3.jpg');"></div>
+                    <div class="member-info">
+                        <h3>Tarushi Gupta</h3>
+                        <span class="member-role">Btech Cse</span>
+                        <p>Lovely Professional University.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('image/WhatsApp\ Image\ 2025-04-16\ at\ 14.21.59_413ec511.jpg');"></div>
+                    <div class="member-info">
+                        <h3>Aditya Raj</h3>
+                        <span class="member-role">Btech Cse</span>
+                        <p>Lovely Professional University</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-gitlab"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-medium"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('image/WhatsApp\ Image\ 2025-04-16\ at\ 14.23.53_c3bfd8c3.jpg');"></div>
+                    <div class="member-info">
+                        <h3>Manshi Sandilya</h3>
+                        <span class="member-role">Btech Cse</span>
+                        <p>Lovely Professional University</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-hackerrank"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-bug"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Our Security Pledge</h2>
+            <p>We are committed to uncompromising security standards:</p>
+            <ul style="margin-left: 20px; margin-bottom: 20px; color: var(--light);">
+                <li>No backdoors - we cannot decrypt your data even if compelled</li>
+                <li>Regular third-party security audits</li>
+                <li>Transparency through open-source components</li>
+                <li>No data collection or tracking</li>
+                <li>Military-grade encryption standards</li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-lock"></i>
+                EncodeX
+            </div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Encrypt</a>
+                <a href="#">Decrypt</a>
+                <a href="#">About</a>
+                <a href="#">Security</a>
+                <a href="#">Contact</a>
+            </div>
+            <p style="margin-top: 20px; color: var(--dark-teal);">© 2023 EncodeX Security Systems. All rights secured.</p>
+        </div>
+    </footer>
+</body>
+</html>
