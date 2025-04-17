@@ -1,61 +1,34 @@
 <?php
-header('Content-Type: application/json');
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+header('Content-Type: application/json'); //tells the browser that the response is in JSON format
+session_start();//starts the session
 
-// Database configuration
-$db_host = "localhost";
-$db_name = "finalprj";  // Same as in db.php
-$db_user = "root";
-$db_pass = "";
-
-// Initialize response
-$response = ['success' => false, 'message' => ''];
+//establish a connection to the database
+$conn = new mysqli("localhost", "root", "", "finalprj");
+$response = ['success' => false, 'message' => '']; //initialized as a default failure message
 
 try {
-    // Connect to the database
-    $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-    if ($conn->connect_error) {
-        throw new Exception("Database connection failed: " . $conn->connect_error);
-    }
+    if ($conn->connect_error) throw new Exception("DB connection failed");//if the connection to the database is failed
 
-    // No need for action here
+    //reads username and password from the submission form
     $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
+    $password = $_POST['password'] ?? ''; //if value not set -> sets it default to empty string
 
-    if (empty($username)) throw new Exception("Username is required");
-    if (empty($password)) throw new Exception("Password is required");
-
-    $stmt = $conn->prepare("SELECT id, username, email, password FROM signup WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-
-        if (password_verify($password, $user['password'])) {
-            session_regenerate_id(true);
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['logged_in'] = true;
-            $_SESSION['last_active'] = time();
-
-            $response['success'] = true;
-            $response['message'] = "Login successful";
-            $response['redirect'] = "dashboard.php";
-        } else {
-            throw new Exception("Invalid username or password");
-        }
-    } else {
-        throw new Exception("Invalid username or password");
+    //checks if username or password is missing
+    if (!$username || !$password)
+    {
+         throw new Exception("Username and password are required");
     }
-
-} catch(Exception $e) {
+    
+    //runs an sql query if it finds a match in the sign up table
+    $sql="SELECT * FROM signup WHERE username='$username' AND password='$password'";
+    $result=$conn->query($sql);//exceutes the sql query
+    if ($result->num_rows == 0) throw new Exception("Invalid username or password"); //throws an error if no match is found in the table
+    $user = $result->fetch_assoc();
+    echo "successful login";//else displays a successful message on the top right corner
+   
+} 
+catch (Exception $e) {
+    //returns the error message in JSON format
     $response['message'] = $e->getMessage();
-} finally {
-    if (isset($conn)) $conn->close();
     echo json_encode($response);
 }
