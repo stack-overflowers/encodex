@@ -69,7 +69,7 @@
 
         <!-- Login -->
         <div class="login">
-          <form action="login.php" method="POST">
+          <form action="login.php" method="POST" >
             <label for="chk">Login</label>
             <input class="tt my-6 px-2" type="text" name="username" placeholder="Username" required>
             <input class="tt my-6 px-2" type="password" name="password" placeholder="Password" required>
@@ -85,64 +85,65 @@
   <footer class="bg-black text-center py-4 border-t border-gray-800 mt-10 relative z-10 text-xs md:text-base">
     Created with ❤️ by <span class="text-cyan-400 font-semibold">team@Stackoverflowers</span>
   </footer>
-
-  <!-- Fallback background -->
+  
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const video = document.getElementById('bgVideo');
-      video.play().catch(() => {
-        document.body.style.background = "linear-gradient(135deg, #0f172a, #1e293b, #334155)";
-      });
-    });
-  </script>
-
-  <!-- Form Submission Scripts -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const handleForm = (formSelector, url, loadingText, defaultText) => {
-        const form = document.querySelector(formSelector);
+    document.addEventListener('DOMContentLoaded', () => {
+      const showNotification = (message, success) => {
+        const notification = document.createElement('div');
+        notification.className = `fixed top-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg text-sm font-bold ${
+          success ? 'bg-green-500' : 'bg-red-500'
+        } text-white transition-opacity duration-300`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+      };
+    
+      const handleForm = (selector, url, loadingText, defaultText) => {
+        const form = document.querySelector(selector);
         if (!form) return;
-
-        form.addEventListener('submit', async function (e) {
+    
+        form.addEventListener('submit', async (e) => {
           e.preventDefault();
           const btn = form.querySelector('button');
           btn.disabled = true;
           btn.textContent = loadingText;
-
+    
           try {
             const formData = new FormData(form);
             const response = await fetch(url, {
               method: 'POST',
-              body: formData
+              body: formData,
             });
-            const data = await response.json();
-
-            const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 ${
-              data.success ? 'bg-green-500' : 'bg-red-500'
-            } text-white font-medium`;
-            notification.textContent = data.message;
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 3000);
-
-            if (data.success) {
-              form.reset();
-              if (url === 'db.php') document.getElementById('chk').checked = true;
-              if (data.redirect) window.location.href = data.redirect;
+    
+            const text = await response.text();
+            let json;
+            try {
+              json = JSON.parse(text);
+            } catch {
+              // fallback for raw response (like echo "successful login")
+              if (text.toLowerCase().includes('successful')) {
+                json = { success: true, message: text };
+              } else {
+                json = { success: false, message: text };
+              }
             }
-          } catch (error) {
-            console.error('Error:', error);
+    
+            showNotification(json.message, json.success);
+            if (json.success) form.reset();
+          } catch (err) {
+            showNotification('Something went wrong!', false);
           } finally {
             btn.disabled = false;
             btn.textContent = defaultText;
           }
         });
       };
-
+    
       handleForm('.signup form', 'db.php', 'Creating...', 'Create Account');
-      handleForm('.login form', 'login.php', 'Logging in...', 'Sign In');
+      handleForm('.login form', 'login.php', 'Signing in...', 'Sign In');
     });
-  </script>
-
+    </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
 </body>
 </html>
